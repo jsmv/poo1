@@ -1,4 +1,4 @@
-  /*
+/*
   Esta función le solicita al usuario un valor numérico fue retomada de https://processing.org/discourse/beta/num_1265145827.html dónde fue escrita por TfGuy44
   
  String input = "";
@@ -56,14 +56,16 @@
   for (int j=x-1;j>0;j--){
   float x0=500/2;
   float y0=500/2;
+  float value = PADOVAN[j];
+  float m = map(value, 0, PADOVAN[x-1] , 0 , 255);
+  fill (m);
   triangle(x0,y0,x0+PADOVAN[j]*10,y0,x0+PADOVAN[j]*10/2,y0-sqrt(75)*PADOVAN[j]);
   triangle(x0,y0,x0-PADOVAN[j]*10,y0,x0-PADOVAN[j]*10/2,y0-sqrt(75)*PADOVAN[j]);
   triangle(x0,y0,x0+PADOVAN[j]*10/2,y0-sqrt(75)*PADOVAN[j],x0-PADOVAN[j]*10/2,y0-sqrt(75)*PADOVAN[j]);
   triangle(x0,y0,x0+PADOVAN[j]*10,y0,x0+PADOVAN[j]*10/2,y0+sqrt(75)*PADOVAN[j]);
   triangle(x0,y0,x0-PADOVAN[j]*10,y0,x0-PADOVAN[j]*10/2,y0+sqrt(75)*PADOVAN[j]);
   triangle(x0,y0,x0+PADOVAN[j]*10/2,y0+sqrt(75)*PADOVAN[j],x0-PADOVAN[j]*10/2,y0+sqrt(75)*PADOVAN[j]);
-  //triangle(x0,y0,x0+PADOVAN[j]*10,y0,(x0+5),y0-sqrt(75)*PADOVAN[j]);
-  //triangle(x0,y0,(x0+PADOVAN[j]*10),y0,(x0+5),y0-sqrt(75)*PADOVAN[j]);
+
   }
   }
   printArray(PADOVAN);  
@@ -78,7 +80,7 @@
   println( "¿Cuál enésimo término de la serie de Padovan desea conocer?"  );
   como no pude lograr que los numeros ingresados por el usuario se usaran para reemplazar la n toca asgniarle un valor manualmente en las lineas siguientes
   */
-  int n  = 15;
+  int n  = 17;
 padovan(n);
 println("El término #" + n );
 println("de la serie de Padovan es el " + enesimopado(n-1));
