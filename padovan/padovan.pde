@@ -1,4 +1,4 @@
-/*
+  /*
   Esta función le solicita al usuario un valor numérico fue retomada de https://processing.org/discourse/beta/num_1265145827.html dónde fue escrita por TfGuy44
   
  String input = "";
@@ -37,7 +37,6 @@
     return 1;
     if (n==2)
     return 1;
-    //avance de la recursion
     if (n>2)
     return enesimopado(n-2) + enesimopado(n-3);
     //si n es negativo o 0
@@ -54,18 +53,30 @@
   
   
   for (int j=x-1;j>0;j--){
-  float x0=500/2;
-  float y0=500/2;
+  float x0=width/2;
+  float y0=height/2;
   float value = PADOVAN[j];
   float m = map(value, 0, PADOVAN[x-1] , 0 , 255);
-  fill (m);
+  
+  noStroke();// se puede quitar eta línea si se desea dejar los bordes de los triangulos
+  
+  //se puede jugar con el color teniendo en cuenta que m en los triangulos más pequeños 
+  //correspondientes a los primeros valores de la serie va a tener un valor pequeño es decir que 
+  //el color obtenido será obscuro y a medida que sean más grandes los valores (y triangulos)
+  //alcansará el 255 correspondiente al color de su posición (red, green, blue)
+  
+  fill (0,m,0);//primer sextante
   triangle(x0,y0,x0+PADOVAN[j]*10,y0,x0+PADOVAN[j]*10/2,y0-sqrt(75)*PADOVAN[j]);
-  triangle(x0,y0,x0-PADOVAN[j]*10,y0,x0-PADOVAN[j]*10/2,y0-sqrt(75)*PADOVAN[j]);
+  fill (m,m,m);//segundo sextante
   triangle(x0,y0,x0+PADOVAN[j]*10/2,y0-sqrt(75)*PADOVAN[j],x0-PADOVAN[j]*10/2,y0-sqrt(75)*PADOVAN[j]);
-  triangle(x0,y0,x0+PADOVAN[j]*10,y0,x0+PADOVAN[j]*10/2,y0+sqrt(75)*PADOVAN[j]);
+  fill (0,m,0);//tercer sextante
+  triangle(x0,y0,x0-PADOVAN[j]*10,y0,x0-PADOVAN[j]*10/2,y0-sqrt(75)*PADOVAN[j]);
+  fill (0,0,m);//cuarto sextante
   triangle(x0,y0,x0-PADOVAN[j]*10,y0,x0-PADOVAN[j]*10/2,y0+sqrt(75)*PADOVAN[j]);
+  fill (m,0,0);//quinto sextante
   triangle(x0,y0,x0+PADOVAN[j]*10/2,y0+sqrt(75)*PADOVAN[j],x0-PADOVAN[j]*10/2,y0+sqrt(75)*PADOVAN[j]);
-
+  fill (0,0,m);//sexto sextante
+  triangle(x0,y0,x0+PADOVAN[j]*10,y0,x0+PADOVAN[j]*10/2,y0+sqrt(75)*PADOVAN[j]); 
   }
   }
   printArray(PADOVAN);  
@@ -80,11 +91,11 @@
   println( "¿Cuál enésimo término de la serie de Padovan desea conocer?"  );
   como no pude lograr que los numeros ingresados por el usuario se usaran para reemplazar la n toca asgniarle un valor manualmente en las lineas siguientes
   */
-  int n  = 17;
+  int n  =16;
 padovan(n);
 println("El término #" + n );
 println("de la serie de Padovan es el " + enesimopado(n-1));
-  size(500,500);  //size(w,h)
+size(550,550);  //size(w,h) se puede cambiar el tamaño de la ventana si el monitor da para más
 
 
 }
