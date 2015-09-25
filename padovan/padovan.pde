@@ -1,4 +1,4 @@
-   /*
+    /*
   Esta función le solicita al usuario un valor numérico fue retomada de https://processing.org/discourse/beta/num_1265145827.html dónde fue escrita por TfGuy44
   
  String input = "";
@@ -30,29 +30,33 @@
   Esta funcion retorna el n-esimo termino de la serie de PADOVAN
   */
 
-  int pado(int n){
-      //salida de la recursion  
-    
-    if(n==1)
+  int enesimopado(int n){    
+    if (n==0)
+    return 1;
+    if (n==1)
     return 1;
     if (n==2)
     return 1;
-    if (n==0)
-    return 1;
     //avance de la recursion
     if (n>2)
-    return pado(n-2) + pado(n-3);
+    return enesimopado(n-2) + enesimopado(n-3);
     //si n es negativo o 0
     return -1;
+    
+    
+
   }
+  
+  
  
   /*guardar los valores que tiene la serie en un
   arreglo para imprimirlos y dibujar los triangulos*/
+  
   int[] padovan(int n){
    int[] PADOVAN= new int[n];
     for (int i=0;i<n;i++){
-  PADOVAN[i]=pado(i);
-  println(pado(i));
+  PADOVAN[i]=enesimopado(i);
+  println(enesimopado(i));
   }
   return PADOVAN;
   }
@@ -62,11 +66,10 @@
   println( "¿Cuál enésimo término de la serie de Padovan desea conocer?"  );
   como no pude lograr ue los numeros ingresados por el usuario se usaran para reemplazar la n toca asgniarle un valor manualmente en las lineas siguientes
   */
-  int n = 15;
- /* 
-keyPressed(keyPressed());
-{
-}*/
+  int n  = 4;
+
+println("El término #" + n );
+println("de la serie de Padovan es el " + enesimopado(n-1));
   
 padovan(n);
 
@@ -76,14 +79,14 @@ padovan(n);
   for (int i=0;i<n;i++)
 {
   }
-
+/*
 triangle(x0,y0,x0+10,y0,x0+5,y0-sqrt(75));
 triangle(x0,y0,x0+10,y0,x0+5,y0+sqrt(75));
 triangle(x0,y0,x0-5,y0+sqrt(75),x0+5,y0+sqrt(75));
 triangle(x0-15,y0-sqrt(75),x0-5,y0+sqrt(75),x0+5,y0-sqrt(75));
 triangle(x0-15,y0-sqrt(75),x0-5,y0-sqrt(75)-sqrt(300),x0+5,y0-sqrt(75));
 triangle(x0+25,y0-sqrt(75)-sqrt(300),x0-5,y0-sqrt(75)-sqrt(300),x0+10,y0);
-
-
+*/
 
 }
+  
