@@ -1,8 +1,9 @@
+ 
+  //Esta función le solicita al usuario un valor numérico fue retomada 
+  //de https://processing.org/discourse/beta/num_1265145827.html dónde fue escrita por TfGuy44 
   /*
-  Esta función le solicita al usuario un valor numérico fue retomada de https://processing.org/discourse/beta/num_1265145827.html dónde fue escrita por TfGuy44
-  
- String input = "";
- void keyPressed(){
+String input = "";
+Void keyPressed(){
   if( key >= '0' && key <= '9' ){
     input+=char(key);
     println( "El número presionado: " + char(key) );
@@ -51,6 +52,8 @@
     for (int i=0;i<x;i++){
   PADOVAN[i]=enesimopado(i);
   
+  //dibujo los triangulos deacuerdo al valor de la serie multiplique los valores por 10 para que fuera
+  //más representativo visuamente, sin embargo se puede reducir este factor.
   
   for (int j=x-1;j>0;j--){
   float x0=width/2;
@@ -64,19 +67,20 @@
   //correspondientes a los primeros valores de la serie va a tener un valor pequeño es decir que 
   //el color obtenido será obscuro y a medida que sean más grandes los valores (y triangulos)
   //alcansará el 255 correspondiente al color de su posición (red, green, blue)
-  
+  int e = 10;
+  //se puede disminuir el valor de descalamiento e para ue el dibujo no se salga de la ventana tan pronto
   fill (0,m,0);//primer sextante
-  triangle(x0,y0,x0+PADOVAN[j]*10,y0,x0+PADOVAN[j]*10/2,y0-sqrt(75)*PADOVAN[j]);
+  triangle(x0,y0,x0+PADOVAN[j]*e,y0,x0+PADOVAN[j]*e/2,y0-sqrt(3)*(PADOVAN[j]*e/2));
   fill (m,m,m);//segundo sextante
-  triangle(x0,y0,x0+PADOVAN[j]*10/2,y0-sqrt(75)*PADOVAN[j],x0-PADOVAN[j]*10/2,y0-sqrt(75)*PADOVAN[j]);
+  triangle(x0,y0,x0+PADOVAN[j]*e/2,y0-sqrt(3)*(PADOVAN[j]*e/2),x0-PADOVAN[j]*e/2,y0-sqrt(3)*(PADOVAN[j]*e/2));
   fill (0,m,0);//tercer sextante
-  triangle(x0,y0,x0-PADOVAN[j]*10,y0,x0-PADOVAN[j]*10/2,y0-sqrt(75)*PADOVAN[j]);
+  triangle(x0,y0,x0-PADOVAN[j]*e,y0,x0-PADOVAN[j]*e/2,y0-sqrt(3)*(PADOVAN[j]*e/2));
   fill (0,0,m);//cuarto sextante
-  triangle(x0,y0,x0-PADOVAN[j]*10,y0,x0-PADOVAN[j]*10/2,y0+sqrt(75)*PADOVAN[j]);
+  triangle(x0,y0,x0-PADOVAN[j]*e,y0,x0-PADOVAN[j]*e/2,y0+sqrt(3)*(PADOVAN[j]*e/2));
   fill (m,0,0);//quinto sextante
-  triangle(x0,y0,x0+PADOVAN[j]*10/2,y0+sqrt(75)*PADOVAN[j],x0-PADOVAN[j]*10/2,y0+sqrt(75)*PADOVAN[j]);
+  triangle(x0,y0,x0+PADOVAN[j]*e/2,y0+sqrt(3)*(PADOVAN[j]*e/2),x0-PADOVAN[j]*e/2,y0+sqrt(3)*(PADOVAN[j]*e/2));
   fill (0,0,m);//sexto sextante
-  triangle(x0,y0,x0+PADOVAN[j]*10,y0,x0+PADOVAN[j]*10/2,y0+sqrt(75)*PADOVAN[j]); 
+  triangle(x0,y0,x0+PADOVAN[j]*e,y0,x0+PADOVAN[j]*e/2,y0+sqrt(3)*(PADOVAN[j]*e/2)); 
   }
   }
   printArray(PADOVAN);  
@@ -91,7 +95,7 @@
   println( "¿Cuál enésimo término de la serie de Padovan desea conocer?"  );
   como no pude lograr que los numeros ingresados por el usuario se usaran para reemplazar la n toca asgniarle un valor manualmente en las lineas siguientes
   */
-  int n  =16;
+  int n  =15;
 padovan(n);
 println("El término #" + n );
 println("de la serie de Padovan es el " + enesimopado(n-1));
