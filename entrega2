@@ -1,3 +1,57 @@
+ Pado serie;
+ //Triangulares sequence;
+void setup() {
+  size(800,700);
+ serie = new Pado();
+//  sequence = new Triangulares (); 
+    background(550);
+  strokeWeight(2); 
+  int x= 20;
+serie.display(x);
+String a= serie.author();
+
+println (a);
+     println("N-esimo termino de la serie");
+     serie.compute(x);
+
+     println("N primeros terminos de la serie");
+     serie.toArray(x);
+ }
+
+void draw() {
+
+}
+----------------------------------------------------------------------------------
+import java.util.Arrays;
+
+abstract class Sequence {
+  abstract String author();
+  abstract String description();
+  abstract int compute(int n);
+  int [] toArray(int n) {
+    int[] seq = new int[n];
+    for (int i=0; i<n; i++)
+      seq[i] = compute(i+1);
+      return seq;
+  }
+  String toString(int n) {
+    return Arrays.toString(toArray(n));
+  } 
+  abstract void display(int n);
+//  void barChart(int n) {
+    //TODO misssing implementation
+//  }
+  
+//  void lineChart(int n) {
+    //TODO misssing implementation
+//  }
+  
+//  void curveFitting(int n) {
+    //TODO misssing implementation
+//  }
+}
+------------------------------------------------------------------
+
 class Pado extends Sequence { 
   String author(){
   return  "Padovan";   
@@ -56,54 +110,43 @@ class Pado extends Sequence {
   
   }
 }
---------------------------------------------------------------------------
-// Super abstract class Sequence
-import java.util.Arrays;
-
-abstract class Sequence {
-  abstract String author();
-  abstract String description();
-  abstract int compute(int n);
-  int [] toArray(int n) {
-    int[] seq = new int[n];
-    for (int i=0; i<n; i++)
-      seq[i] = compute(i+1);
-      return seq;
-  }
-  String toString(int n) {
-    return Arrays.toString(toArray(n));
+-------------------------------------------------------------------------
+class Triangulares extends Sequence { 
+  String author(){
+  return  "Pitágoras";   
   } 
-  abstract void display(int n);
-//  void barChart(int n) {
-    //TODO misssing implementation
-//  }
-  
-//  void lineChart(int n) {
-    //TODO misssing implementation
-//  }
-  
-//  void curveFitting(int n) {
-    //TODO misssing implementation
-//  }
-}
------------------------------------------------------------------------------------------
-import javax.sound.midi.Sequence;
- 
- Pado sequence;
-void setup() {
- size(550,550);
-  sequence = new Pado (); 
-    background(550);
-  strokeWeight(2); 
-sequence.display(20);
-String a= sequence.author();
-println (a);
-     println("N-esimo termino de Pado");
-     sequence.compute(6);
-     println("N primeros terminos de los Pado");
-     sequence.toArray(6);
- }
+   String description(){
+      return  "los números";
+  }    
+   int compute (int n){
+     println((n*(n+1))/2);
+     return n;
+   }
+   int [] toArray(int n){
+     int[] seq = new int[n];
+     for (int i=0; i<n; i++)
+      seq[i] = compute((i*(i+1))/2);
+     return seq;
+     
+   }
+   String toString(int n){
+    return Arrays.toString(toArray(n)); 
+  }   
+  void display (int n){
+    int y=685;
+    int x=15;
+    int s=n;
+    for(int i=0;i<n;i++){
+      for(int j=0;j<s;j++){
+         rectMode(CENTER); 
+         ellipse(x,y,20,20); 
+         x=x+20;              
+       }  
+       y=y-20;
+       s=s-1;
+       x=15;
+     }
 
-void draw() {
-
-} 
+        
+   } 
+ } 
